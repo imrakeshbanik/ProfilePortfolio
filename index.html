@@ -593,9 +593,9 @@ Business Intelligence Developer working in the Financial Services domain(Custody
                             <div class="timeline-content">
                                 <h3><span class="section-content1">Citigroup </span></h3>
 				<h4><span class="section-content2">Manager </span></h4>
-                                <p class="dates"><i class="fas fa-calendar-alt"></i> January 2023 - Present (2 years 8 months)  | <i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India </p>
+                                <p class="dates"><i class="fas fa-calendar-alt"></i> January 2023 - Present (<span id="citi-duration"></span>)  | <i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India </p>
                                 <br><h4><span  class="section-content2">Assistant Manager </span></h4>
-                                <p class="dates"><i class="fas fa-calendar-alt"></i> January 2021 - January 2023 (2 years 1 month)  | <i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India </p>
+                                <p class="dates"><i class="fas fa-calendar-alt"></i> January 2021 - December 2022 (2 years)  | <i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India </p>
                                 <ul>
                                     <li>Contributed to QlikSense Proof of Concept (PoC) for domain-specific logic.</li>
                                     <li>Involved in migrating dashboards from QlikView to the QlikSense Hub.</li>
@@ -732,45 +732,7 @@ Business Intelligence Developer working in the Financial Services domain(Custody
     </div>
     <script src="./content/script.js"></script>
     <script>
-        
-        // Animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.section-title, .card').forEach((el) => {
-            observer.observe(el);
-        });
-        
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        const searchBtn = document.querySelector('.search-btn');
-        
-        searchBtn.addEventListener('click', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                // Highlight matching elements
-                document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
-                    if (el.textContent.toLowerCase().includes(searchTerm)) {
-                        el.style.backgroundColor = 'rgba(6, 182, 212, 0.2)';
-                        el.style.color = 'var(--accent)';
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                    }
-                });
-            }
-        });
-        
-        // Clear highlights when searching again
-        searchInput.addEventListener('input', () => {
-            document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
-                el.style.backgroundColor = '';
-                el.style.color = '';
-            });
-        });
+
     </script>
 </body>
 </html>

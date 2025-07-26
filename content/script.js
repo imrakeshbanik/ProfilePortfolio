@@ -35,3 +35,65 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.section-title, .card').forEach((el) => {
+            observer.observe(el);
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        
+        searchBtn.addEventListener('click', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            if (searchTerm) {
+                // Highlight matching elements
+                document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
+                    if (el.textContent.toLowerCase().includes(searchTerm)) {
+                        el.style.backgroundColor = 'rgba(6, 182, 212, 0.2)';
+                        el.style.color = 'var(--accent)';
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                    }
+                });
+            }
+        });
+        
+        // Clear highlights when searching again
+        searchInput.addEventListener('input', () => {
+            document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
+                el.style.backgroundColor = '';
+                el.style.color = '';
+            });
+        });
+
+
+    function getDurationSince(startDateStr) {
+      const startDate = new Date(startDateStr);
+      const today = new Date();
+
+      let years = today.getFullYear() - startDate.getFullYear();
+      let months = today.getMonth() - startDate.getMonth();
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      return { years, months };
+    }
+
+    const duration = getDurationSince('2023-01-01'); 
+    const displayText = `${duration.years} years ${duration.months} months`;
+
+
+    document.getElementById('citi-duration').textContent = displayText;
