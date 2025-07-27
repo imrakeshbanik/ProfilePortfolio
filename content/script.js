@@ -71,7 +71,6 @@ searchBtn.addEventListener('click', () => {
             el.style.color = 'var(--accent)';
             matches.push(el);
 
-            // ✅ Reveal hidden parent `.section-content` if any
             const sectionContent = el.closest('.section-content');
             if (sectionContent && sectionContent.classList.contains('hidden')) {
                 sectionContent.classList.remove('hidden');
@@ -85,7 +84,6 @@ searchBtn.addEventListener('click', () => {
                 }
             }
 
-            // ✅ Scroll to the match
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     });
