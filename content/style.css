@@ -184,6 +184,8 @@ section {
     font-size: 0.9em;
     font-weight: 600;
     transition: all 0.3s ease;
+    Margin-bottom: 10px;
+    display: inline-block;
 }
 .skill-tag:hover {
     background-color: var(--secondary-color);
@@ -224,7 +226,15 @@ section {
     opacity: 1;
 }
 
+.section-content2 {
+	line-height: normal;
+}
+
 .section-content.hidden {
+    max-height: 0;
+    opacity: 0;
+}
+.skills-container.hidden {
     max-height: 0;
     opacity: 0;
 }
@@ -362,4 +372,34 @@ section {
     .tagline {
         font-size: 1.1em;
     }
+.search-container {
+    display: flex;
+    margin-bottom: 2rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    align-items: center;
+}
+.search-input {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px 50px 50px 50px;
+    border: 2px solid var(--border);
+    font-size: 1rem;
+    background: var(--card-bg);
+    color: var(--dark);
+    outline: none;
+    Margin-bottom: 10px;
+}
+.search-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px 50px 50px 50px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
 }

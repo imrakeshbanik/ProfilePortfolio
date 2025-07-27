@@ -54,19 +54,42 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchInput = document.querySelector('.search-input');
         const searchBtn = document.querySelector('.search-btn');
         
-        searchBtn.addEventListener('click', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                // Highlight matching elements
-                document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
-                    if (el.textContent.toLowerCase().includes(searchTerm)) {
-                        el.style.backgroundColor = 'rgba(6, 182, 212, 0.2)';
-                        el.style.color = 'var(--accent)';
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                    }
-                });
+searchBtn.addEventListener('click', () => {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    // Clear all previous highlights
+    document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
+        el.style.backgroundColor = '';
+        el.style.color = '';
+    });
+
+    let matches = [];
+
+    document.querySelectorAll('.skill-tag, .section-content1, .section-content2').forEach(el => {
+        if (el.textContent.toLowerCase().includes(searchTerm)) {
+            el.style.backgroundColor = 'rgba(6, 182, 212, 0.2)';
+            el.style.color = 'var(--accent)';
+            matches.push(el);
+
+            // ✅ Reveal hidden parent `.section-content` if any
+            const sectionContent = el.closest('.section-content');
+            if (sectionContent && sectionContent.classList.contains('hidden')) {
+                sectionContent.classList.remove('hidden');
+
+                // Optional: toggle the header icon
+                const collapsible = sectionContent.previousElementSibling;
+                if (collapsible && collapsible.classList.contains('collapsible')) {
+                    collapsible.classList.add('active');
+                    const icon = collapsible.querySelector('.toggle-icon');
+                    if (icon) icon.textContent = '+'; // minus symbol
+                }
             }
-        });
+
+            // ✅ Scroll to the match
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+});
         
         // Clear highlights when searching again
         searchInput.addEventListener('input', () => {
